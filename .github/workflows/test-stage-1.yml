@@ -1,0 +1,21 @@
+name: test-stage-1
+
+on:
+  push:
+    branches: ["**"]
+
+jobs:
+  stage-1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: "temurin"
+          cache: maven
+
+      - name: Run Stage 1 tests
+        run: mvn test -Dtest=Stage1Test -B
