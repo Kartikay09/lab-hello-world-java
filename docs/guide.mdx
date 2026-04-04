@@ -1,0 +1,145 @@
+<LabObjectives title="What you’ll build and learn">
+
+You will:
+
+- Write a small **Java** program from scratch and run it with **Maven**
+- Understand **compile** vs **test** in the Maven lifecycle
+- Use **JUnit 5** for automated checks that mirror the lab stages
+- Handle edge cases (empty input) in a way the test suite expects
+
+Each **Stage** below lines up with a GitHub Actions workflow on your fork. Use **Run check** in the lab workspace, or push to your default branch, to update progress.
+
+</LabObjectives>
+
+<Prerequisites title="Before you start">
+
+<Prereq
+  title="JDK"
+  detail="Java 17 or newer (`java --version`)"
+  href="https://adoptium.net/"
+  icon="java"
+/>
+<Prereq
+  title="Apache Maven"
+  detail="3.8+ recommended (`mvn --version`)"
+  href="https://maven.apache.org/install.html"
+  icon="maven"
+/>
+<Prereq
+  title="Git & GitHub"
+  detail="Fork the template; clone with SSH or HTTPS"
+  href="https://docs.github.com/en/get-started"
+  icon="git"
+/>
+
+</Prerequisites>
+
+<Resources title="Helpful references">
+
+<ResourceLink
+  href="https://docs.oracle.com/en/java/javase/17/docs/api/index.html"
+  label="Java 17 API"
+  description="Official language & library reference"
+/>
+<ResourceLink
+  href="https://junit.org/junit5/docs/current/user-guide/"
+  label="JUnit 5 User Guide"
+  description="Annotations, assertions, lifecycle"
+/>
+<ResourceLink href="https://maven.apache.org/guides/" label="Maven guides" description="Lifecycle, POM basics" />
+
+</Resources>
+
+<LabSetup title="Get the code on your machine">
+
+Fork the **lab-hello-world-java** template from the platform, then clone **your** fork (replace `<you>` with your GitHub username):
+
+```bash
+git clone https://github.com/<you>/lab-hello-world-java.git
+cd lab-hello-world-java
+```
+
+Verify the project compiles:
+
+```bash
+mvn -q compile
+```
+
+<Callout type="tip">
+
+Link your fork in the **Lab workspace** (right column) so stage checks and points sync automatically.
+
+</Callout>
+
+</LabSetup>
+
+<Stage
+  stage={1}
+  title={'Print `Hello, World!`'}
+  subtitle={'Make `src/main/java/Main.java` print exactly `Hello, World!` to stdout (no extra lines).'}
+  minutes={25}
+>
+
+Open `src/main/java/Main.java` and implement the first checkpoint.
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        // TODO: Stage 1 — print exactly Hello, World! to stdout
+    }
+}
+```
+
+Run tests locally:
+
+```bash
+mvn -q test
+```
+
+</Stage>
+
+<Stage
+  stage={2}
+  title="Personalized greeting"
+  subtitle="Read a name from args; print a greeting. Tests cover happy path and edge cases."
+  minutes={35}
+>
+
+Extend `main` to use `args[0]` when present. Follow the test names in `src/test` for exact output format.
+
+<Callout type="warning">
+
+Keep output **exactly** what the tests expect — trailing spaces and newlines matter.
+
+</Callout>
+
+</Stage>
+
+<Stage
+  stage={3}
+  title="Hardening & edge cases"
+  subtitle="Graceful behavior for missing or blank names, aligned with JUnit coverage."
+  minutes={30}
+>
+
+Refine your implementation until all tests pass. Prefer small, readable methods over clever one-liners.
+
+</Stage>
+
+<SuccessCriteria title="You’re done when">
+
+- All **GitHub Actions** stages for this lab pass on your fork (or local `mvn test` matches CI)
+- You can explain how Maven runs **compile** then **surefire** tests
+- You’re comfortable reading a failing test and fixing the implementation
+
+</SuccessCriteria>
+
+<Section title="Reference: project layout">
+
+| Path | Role |
+|------|------|
+| `pom.xml` | Maven config, JUnit 5, Java 17 |
+| `src/main/java/Main.java` | Your entry point |
+| `src/test/java` | Automated checks |
+
+</Section>
