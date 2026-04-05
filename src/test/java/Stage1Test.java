@@ -10,7 +10,7 @@ class Stage1Test {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 
-        Main.main(new String[]{});
+        App.main(new String[]{});
 
         System.setOut(System.out);
         String output = out.toString().trim();
